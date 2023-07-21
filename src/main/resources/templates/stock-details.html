@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+    body {
+      background-color: #f8f9fa; /* Set your preferred background color here */
+    }
+
+    .header {
+      background-color: #007bff; /* Set your preferred header background color here */
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="header">
+    <h1>Stock Management System</h1>
+</div>
+
+<div class="container mt-4">
+    <div class="text-right mb-3">
+        <a class="btn btn-primary" th:href="@{'/new'}">Add New</a>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Stock ID</th>
+                    <th>Stock Name</th>
+                    <th>Price</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="stock : ${liststock}">
+                    <td th:text="${stock.id}">Stock ID</td>
+                    <td th:text="${stock.stockname}">Stock Name</td>
+                    <td th:text="${stock.value}">Value</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" th:href="@{'/edit/' + ${stock.id}}">Edit</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" th:href="@{'/delete/' + ${stock.id}}">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
